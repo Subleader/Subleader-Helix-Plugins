@@ -28,7 +28,7 @@ function PANEL:Init()
 
 	self.controls.Paint = function(this, w, h)
 		local text = self.contents:GetValue()
-		draw.SimpleText(Format("Nombre de caractères: %s/3000", string.len(text)), "DermaDefault", 10, h/2, color_white, TEXT_ALIGN_LEFT, 1)
+		draw.SimpleText(Format("Number of characters: %s/3000", string.len(text)), "DermaDefault", 10, h/2, color_white, TEXT_ALIGN_LEFT, 1)
 	end
 
 	self.confirm.DoClick = function(this)
