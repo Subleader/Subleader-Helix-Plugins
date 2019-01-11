@@ -3,7 +3,7 @@ local function ixActMenu()
 	local animationdesc = {"Stand here","Sit","Sit against a wall","Cheer","Lean against a wall","Lay on the ground injured","Face a wall","Put your hands on your head","Threat","Deny","Motion","Wave","Pant","Lay against a window"}
 	local frame = vgui.Create( "DFrame" )
 	frame:SetSize( 500, 300 )
-	frame:SetTitle( "Utilitary Menu" )
+	frame:SetTitle( "Utility Menu" )
 	frame:MakePopup()
 	frame:Center()
 
