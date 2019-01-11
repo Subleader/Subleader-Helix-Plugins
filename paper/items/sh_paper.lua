@@ -1,8 +1,8 @@
-ITEM.name = "Papier"
+ITEM.name = "Paper"
 ITEM.model = "models/props_c17/paper01.mdl"
 ITEM.width = 1
 ITEM.height = 1
-ITEM.description = "Une feuille de papier sur laquelle vous pouvez écrire."
+ITEM.description = "A paper which one you can write on."
 ITEM.price = 0
 
 ITEM.functions.use = {
