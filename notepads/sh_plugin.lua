@@ -1,7 +1,7 @@
 PLUGIN.name = "Bloc note"
 PLUGIN.author = "Black Tea"
 PLUGIN.description = "Allows you to place notepads that you can write on."
-NOTELIMIT = 5000
+NOTELIMIT = 2000
 WRITINGDATA = WRITINGDATA or {}
 
 --include("derma/cl_vgui.lua")
@@ -26,7 +26,7 @@ else
 		if (string.len(contents) <= NOTELIMIT) then
 			local note = FindNoteByID(id)
 			if (note:canWrite(client) == false) then
-				client:nofity("Ce Notepad ne vous appartient pas.")
+				client:nofity("This notepad doesn't belong to you.")
 			end
 
 			WRITINGDATA[id] = contents

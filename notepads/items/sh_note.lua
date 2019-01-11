@@ -2,12 +2,12 @@ ITEM.name = "Notepad"
 ITEM.model = "models/props_lab/clipboard.mdl"
 ITEM.width = 1
 ITEM.height = 1
-ITEM.description = "Un bloc note sur lequel vous pouvez écrire."
+ITEM.description = "A notepad which one you can write on."
 ITEM.price = 0
 
 -- On player uneqipped the item, Removes a weapon from the player and keep the ammo in the item.
 ITEM.functions.use = { -- sorry, for name order.
-	name = "Utiliser",
+	name = "Use",
 	tip = "useTip",
 	icon = "icon16/pencil.png",
 	OnRun = function(item)
