@@ -34,9 +34,9 @@ ITEM.bodyGroups = {
 
 function ITEM:GetDescription()
 	if (self.entity) then
-		return L(self.description .. "\n \n Durabilité:" .. math.floor(self:GetData("Durability", 100)))
+		return L(self.description .. "\n \n Durability:" .. math.floor(self:GetData("Durability", 100)))
 	else
-        return L(self.description .. "\n \n Durabilité:" .. math.floor(self:GetData("Durability", 100)) .. "\n \nResistance: \n  Perforation: " .. (self.damage[1]) .. "\n  Evisceration: " .. (self.damage[2]) .. "\n  Electricité: " .. (self.damage[3]) .. "\n  Brulure: " .. (self.damage[4]) .. "\n  Radiation: " .. (self.damage[5]) .. "\n  Chimique: " .. (self.damage[6]) .. "\n  Choc: " .. (self.damage[7]))
+        return L(self.description .. "\n \n Durability:" .. math.floor(self:GetData("Durability", 100)) .. "\n \nResistance: \n  Bulletproof: " .. (self.damage[1]) .. "\n  Evisceration: " .. (self.damage[2]) .. "\n  Electricity: " .. (self.damage[3]) .. "\n  Burn: " .. (self.damage[4]) .. "\n  Radiation: " .. (self.damage[5]) .. "\n  Chemical: " .. (self.damage[6]) .. "\n  Shock: " .. (self.damage[7]))
 	end
 end
 
@@ -155,10 +155,10 @@ ITEM.functions.repair = {
 				item:SetData("Durability", 100)
 				number = 0
 			else
-				client:Notify("Il vous faut deux Metal de récupération pour réparer cette armure")
+				client:Notify("You need two scrap metals to do this")
 			end
 		else
-			client:Notify("Il vous faut un niveau d'entretien plus élever")
+			client:Notify("You need a better level of maintenance to repair this")
 		end
 		return false
 	end
