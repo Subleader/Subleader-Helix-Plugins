@@ -47,7 +47,7 @@ function PLUGIN:PlayerHurt( client, attacker, health, damageTaken )
 end
 
 ix.command.Add("Gasmask", {
-	description = "Mettre ou enlever son masque à gaz.",
+	description = "Wear or unwear your gasmask.",
 	adminOnly = false,
 	OnRun = function(self, client)
 		local character = client:GetCharacter()
