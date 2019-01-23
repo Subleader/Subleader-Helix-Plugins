@@ -1,6 +1,6 @@
 local PLUGIN = PLUGIN
 PLUGIN.name = "Character Customization"
-PLUGIN.desc = "Panel that allows to change to change bodygroups and skins"
+PLUGIN.desc = "Panel that allows to change bodygroups and skins"
 PLUGIN.author = "Subleader"
 
 ix.util.Include("cl_hooks.lua")
