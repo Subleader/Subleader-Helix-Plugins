@@ -37,7 +37,7 @@ function PANEL:Init()
 			PicturePanel:Remove()
 		end
 		local url = self.test:GetValue()
-		PicturePanel = vgui.Create("PictureDesc")
+		PicturePanel = vgui.Create("ixPictureDesc")
 		PicturePanel:Populate(tostring(url))
 		print (url)
 		PicturePanel:MakePopup()
