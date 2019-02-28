@@ -57,10 +57,10 @@ ix.command.Add("Gasmask", {
 			if (v.base == "base_armor") and (v.gasmask == true) then
 				if client:GetNetVar("gasmask") then
 					client:SetNetVar("gasmask", false)
-					client:Notify("Vous avez enlever votre masque à gaz.")
+					client:Notify("You have removed your gas mask.")
 				else
 					client:SetNetVar("gasmask", true)
-					client:Notify("Vous avez mis votre masque à gaz.")
+					client:Notify("You have put on your gas mask.")
 				end
 			end
 		end
