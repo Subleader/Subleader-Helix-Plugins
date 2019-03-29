@@ -43,6 +43,13 @@ function PANEL:Init()
 	self.left:SetPaintBackground( true )
 	self.left:DockMargin( 0, 0, 4, 0 )
 
+		self.labelbody = vgui.Create( "DLabel", self, "labelbody" )
+		self.labelbody:SetText( "  Bodygroups" )
+		self.labelbody:SetFont("ixSmallFont")
+		self.labelbody:SetSize( 36, 36 )
+		self.labelbody:Dock( TOP )
+		self.left:AddItem( self.labelbody )
+
 		local bodygroup = LocalPlayer():GetBodyGroups()
 		local bodygrouptest = LocalPlayer():GetCharacter():GetData("groups", {})
 		--PrintTable(bodygrouptest)
@@ -79,8 +86,17 @@ function PANEL:Init()
 			end
 		end
 
+		self.labelskin = vgui.Create( "DLabel", self, "labelskin" )
+		self.labelskin:SetText( "  Skin" )
+		self.labelskin:SetFont("ixSmallFont")
+		self.labelskin:SetSize( 36, 36 )
+		self.labelskin:DockMargin( 0, 20, 0, 0 )
+		self.labelskin:Dock( TOP )
+		self.left:AddItem( self.labelskin )
+
 		self.butskin = vgui.Create( "DComboBox", self, "butskin" )
-		self.butskin:SetValue( "Skin" )
+		self.butskin:SetValue( LocalPlayer():GetCharacter():GetData("skin", 0) or "Skin" )
+		characterModel.Entity:SetSkin(LocalPlayer():GetCharacter():GetData("skin", 0) or "Skin")
 		self.butskin:SetFont("ixSmallFont")
 		self.butskin:SetSize( 36, 36 )
 		self.butskin:SetSortItems( false )
