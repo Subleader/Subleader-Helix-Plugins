@@ -33,7 +33,7 @@ function PANEL:Init()
 	characterModel = vgui.Create( "ixModelPanel", self, "characterModel" )
 	characterModel:SetPos(0, 0)
 	characterModel:SetSize( self:GetWide() / 1.30 - 7 , self:GetTall() /3)
-	characterModel:SetModel(LocalPlayer():GetModel())
+	characterModel:SetModel(LocalPlayer():GetCharacter():GetModel())
 	characterModel:SetFOV(80)
 	characterModel:Dock(RIGHT)
 
@@ -44,26 +44,39 @@ function PANEL:Init()
 	self.left:DockMargin( 0, 0, 4, 0 )
 
 		local bodygroup = LocalPlayer():GetBodyGroups()
+		local bodygrouptest = LocalPlayer():GetCharacter():GetData("groups", {})
+		--PrintTable(bodygrouptest)
+		--PrintTable(bodygroup)
 		for k, v in pairs( bodygroup ) do
-			self.but = vgui.Create( "DComboBox", self, "but" )
-			self.but:SetValue( v.name )
-			self.but:SetFont("ixSmallFont")
-			self.but:SetSize( 36, 36 )
-			self.but:Dock( TOP )
-			for x, y in pairs( v.submodels ) do
-				self.but:AddChoice( y, x )
-			end
-			function self.but:OnSelect(self, index, value)
-				if (BodygroupData[v.id]) then
-					table.remove(BodygroupData, v.id)
-					table.insert(BodygroupData, v.id, value)
-					characterModel.Entity:SetBodygroup(v.id, value)
-				else
-					table.insert(BodygroupData, v.id, value)
-					characterModel.Entity:SetBodygroup(v.id, value)
+			print (k)
+			if k > 1 then
+				self.but = vgui.Create( "DComboBox", self, "but" )
+				self.but:SetValue( v.name )
+				self.but:SetFont("ixSmallFont")
+				self.but:SetSize( 36, 36 )
+				self.but:Dock( TOP )
+				if bodygrouptest[k-1] then
+					self.but:SetValue( bodygrouptest[k-1] )
+					table.insert(BodygroupData, v.id, bodygrouptest[k-1])
+					characterModel.Entity:SetBodygroup(v.id, bodygrouptest[k-1])
 				end
-			end 
-			self.left:AddItem( self.but )
+				--PrintTable(v.submodels)
+				for x, y in pairs( v.submodels ) do
+					print (x)
+					self.but:AddChoice( x , x )
+				end
+				function self.but:OnSelect(self, index, value)
+					if (BodygroupData[v.id]) then
+						table.remove(BodygroupData, v.id)
+						table.insert(BodygroupData, v.id, value)
+						characterModel.Entity:SetBodygroup(v.id, value)
+					else
+						table.insert(BodygroupData, v.id, value)
+						characterModel.Entity:SetBodygroup(v.id, value)
+					end
+				end 
+				self.left:AddItem( self.but )
+			end
 		end
 
 		self.butskin = vgui.Create( "DComboBox", self, "butskin" )
