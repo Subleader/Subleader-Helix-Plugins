@@ -19,7 +19,7 @@ end)
 
 
 -- Language function
-local function CreateLangCommand (commandName, flagName, format)
+local function CreateLangCommand (commandName, flagName, format, dropFormat)
 	do
 		local COMMAND = {}
 		COMMAND.arguments = ix.type.text
@@ -37,7 +37,7 @@ local function CreateLangCommand (commandName, flagName, format)
 	do
 		local CLASS = {}
 		CLASS.color = ix.config.Get("chatColor")
-		CLASS.format = "%s "..format
+		CLASS.format = "%s "..format.." \"%s\""
 
 		function CLASS:CanHear(speaker, listener)
 			return (ix.config.Get("chatRange", 280) and listener:GetCharacter():HasFlags(flagName))
@@ -49,7 +49,7 @@ local function CreateLangCommand (commandName, flagName, format)
 	do
 		local CLASS = {}
 		CLASS.color = ix.config.Get("chatColor")
-		CLASS.format = "%s "..format.." \"%s\""
+		CLASS.format = "%s "..dropFormat
 
 		function CLASS:CanHear(speaker, listener)
 			return (ix.config.Get("chatRange", 280) and !listener:GetCharacter():HasFlags(flagName))
@@ -59,8 +59,8 @@ local function CreateLangCommand (commandName, flagName, format)
 end
 
 -- Create your language here
-CreateLangCommand ("fr", "F", "says in french") -- Command, Flag, Format
-CreateLangCommand ("ar", "A", "says in arabic") -- Command, Flag, Format
-CreateLangCommand ("ge", "G", "says in german") -- Command, Flag, Format
-CreateLangCommand ("sp", "S", "says in spanish") -- Command, Flag, Format
-CreateLangCommand ("ita", "I", "says in italian") -- Command, Flag, Format
+CreateLangCommand ("fr", "F", "says in french", "says something in french") -- Command, Flag, Format
+CreateLangCommand ("ar", "A", "says in arabic", "says something in arabic") -- Command, Flag, Format
+CreateLangCommand ("ge", "G", "says in german", "says something in german") -- Command, Flag, Format
+CreateLangCommand ("sp", "S", "says in spanish", "says something in spanish") -- Command, Flag, Format
+CreateLangCommand ("ita", "I", "says in italian", "says something in italian") -- Command, Flag, Format
