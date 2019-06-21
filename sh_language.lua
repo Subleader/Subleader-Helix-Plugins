@@ -37,7 +37,7 @@ local function CreateLangCommand (commandName, flagName, format)
 	do
 		local CLASS = {}
 		CLASS.color = ix.config.Get("chatColor")
-		CLASS.format = "%s "..format.." \"%s\""
+		CLASS.format = "%s "..format
 
 		function CLASS:CanHear(speaker, listener)
 			return (ix.config.Get("chatRange", 280) and listener:GetCharacter():HasFlags(flagName))
