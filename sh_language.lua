@@ -40,7 +40,7 @@ local function CreateLangCommand (commandName, flagName, format, dropFormat)
 		CLASS.format = "%s "..format.." \"%s\""
 
 		function CLASS:CanHear(speaker, listener)
-			return (ix.config.Get("chatRange", 280) and listener:GetCharacter():HasFlags(flagName))
+			return (speaker:GetPos() - listener:GetPos()):LengthSqr() <= ix.config.Get("chatRange", 280) and listener:GetCharacter():HasFlags(flagName))
 		end
 
 		ix.chat.Register(commandName, CLASS)
@@ -52,14 +52,14 @@ local function CreateLangCommand (commandName, flagName, format, dropFormat)
 		CLASS.format = "%s "..dropFormat
 
 		function CLASS:CanHear(speaker, listener)
-			return (ix.config.Get("chatRange", 280) and !listener:GetCharacter():HasFlags(flagName))
+			return (speaker:GetPos() - listener:GetPos()):LengthSqr() <= ix.config.Get("chatRange", 280) and !listener:GetCharacter():HasFlags(flagName))
 		end
 		ix.chat.Register(commandName.."_drop", CLASS)
 	end
 end
 
 -- Create your language here
-CreateLangCommand ("fr", "F", "says in french", "says something in french") -- Command, Flag, Format
+CreateLangCommand ("fr", "F", "says in french", "says something in french") -- Command, Flag, Format, Format when no flag
 CreateLangCommand ("ar", "A", "says in arabic", "says something in arabic") -- Command, Flag, Format
 CreateLangCommand ("ge", "G", "says in german", "says something in german") -- Command, Flag, Format
 CreateLangCommand ("sp", "S", "says in spanish", "says something in spanish") -- Command, Flag, Format
