@@ -38,11 +38,10 @@ local function CreateLangCommand (commandName, flagName, format, dropFormat)
 		local CLASS = {}
 		CLASS.color = ix.config.Get("chatColor")
 		CLASS.format = "%s "..format.." \"%s\""
-
 		function CLASS:CanHear(speaker, listener)
-			return (speaker:GetPos() - listener:GetPos()):LengthSqr() <= ix.config.Get("chatRange", 280) and listener:GetCharacter():HasFlags(flagName)
+			local chatRange = ix.config.Get("chatRange", 280)
+			return (speaker:GetPos() - listener:GetPos()):LengthSqr() <= (chatRange * chatRange) and listener:GetCharacter():HasFlags(flagName)
 		end
-
 		ix.chat.Register(commandName, CLASS)
 	end
 
@@ -52,7 +51,8 @@ local function CreateLangCommand (commandName, flagName, format, dropFormat)
 		CLASS.format = "%s "..dropFormat
 
 		function CLASS:CanHear(speaker, listener)
-			return (speaker:GetPos() - listener:GetPos()):LengthSqr() <= ix.config.Get("chatRange", 280) and !listener:GetCharacter():HasFlags(flagName)
+			local chatRange = ix.config.Get("chatRange", 280)
+			return (speaker:GetPos() - listener:GetPos()):LengthSqr() <= (chatRange * chatRange) and !listener:GetCharacter():HasFlags(flagName)
 		end
 		ix.chat.Register(commandName.."_drop", CLASS)
 	end
